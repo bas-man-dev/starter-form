@@ -3,8 +3,14 @@ import { Form } from "./Form";
 
 afterEach(cleanup);
 
-it("The form has 2 input fields", () => {
+it("First name correctly labeled", () => {
   render(<Form />);
-  const inputFields = screen.getAllByRole("textbox");
-  expect(inputFields.length).toEqual(2);
+  const inputNode = screen.getByLabelText(/First Name/i);
+  expect(inputNode).toBeTruthy();
+});
+
+it("Family name correctly labeled", () => {
+  render(<Form />);
+  const inputNode = screen.getByLabelText(/Family Name/i);
+  expect(inputNode).toBeTruthy();
 });
